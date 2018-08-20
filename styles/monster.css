@@ -1,0 +1,312 @@
+:root {
+  --width: 200px;
+  --height: 200px;
+}
+
+.Monster {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  animation: monster 20s infinite ease-in-out;
+}
+
+.Monster__cloud {
+  position: absolute;
+  top: calc((var(--height) * 1.35 - var(--height)) / -2);
+  left: calc((var(--width) * 1.35 - var(--width)) / -2);
+  width: calc(var(--width) * 1.35);
+  height: calc(var(--height) * 1.35);
+  border-radius: 50%;
+  background: rgba(155, 55, 155, 0.5);
+  opacity: 0.93;
+  box-shadow: 0px 0px 50px 50px blueviolet;
+  animation: cloud 5s infinite linear;
+  filter: blur(10px);
+}
+
+[class^="Monster__square"] {
+  position: absolute;
+  top: calc((var(--height) * 0.5 - var(--height)) / -2);
+  left: calc((var(--width) * 0.5 - var(--width)) / -2);
+  width: calc(var(--width) * 0.5);
+  height: calc(var(--height) * 0.5);
+  background: magenta;
+  opacity: 0.2;
+  animation: square 5s infinite linear;
+}
+
+.Monster__square-2 {
+  animation-duration: 10s;
+  background: lime;
+}
+
+.Monster__stripes {
+  position: absolute;
+  top: calc((var(--height) * 1.5 - var(--height)) / -2);
+  left: calc((var(--width) * 1.5 - var(--width)) / -2);
+  width: calc(var(--width) * 1.5);
+  height: calc(var(--height) * 1.5);
+  background: repeating-linear-gradient(rgba(255, 0, 255, 0.5), rgba(0, 255, 255, 0.5) 20px, transparent 20px, transparent 50px);
+  border-radius: 50%;
+  animation: stripes 5s infinite linear;
+}
+
+.Monster__bars,
+.Monster__bars-2 {
+  position: absolute;
+  top: calc(50% - 20px / 2);
+  left: calc((var(--width) * 2.2 - var(--width)) / -2);
+  width: calc(var(--width) * 2.2);
+  height: 20px;
+  background: aqua;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: bars 5s infinite linear;
+}
+
+.Monster__bars::after,
+.Monster__bars::before,
+.Monster__bars-2:after,
+.Monster__bars-2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.Monster__bars::before {
+  background: yellow;
+  transform: rotate(45deg);
+}
+
+.Monster__bars::after {
+  background: yellowgreen;
+  transform: rotate(-45deg);
+}
+
+.Monster__bars-2 {
+  background: crimson;
+  animation-duration: 10s;
+}
+
+.Monster__bars-2::before {
+  background: deeppink;
+  transform: rotate(45deg);
+}
+
+.Monster__bars-2::after {
+  background: aquamarine;
+  transform: rotate(-45deg);
+}
+
+.Monster__triangle {
+  width: 0;
+  height: 0;
+  border: calc(var(--width) * 0.75) solid transparent;
+  border-left-color: lightblue;
+  opacity: 0.4;
+  animation: bars 2s infinite linear;
+}
+
+[class^="Monster__eye"] {
+  position: absolute;
+  top: 10%;
+  width: calc(var(--width) / 2);
+  height: calc(var(--width) / 2);
+  background: radial-gradient(black, black, purple, black);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+[class^="Monster__eye"]::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 25%;
+  height: 35%;
+  background: radial-gradient(rgba(255, 255, 255, 0.9), white, white);
+  border-radius: 50%;
+  animation: eyes 10s infinite linear;
+}
+
+[class^="Monster__eye"]::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 5%;
+  height: 5%;
+  background: white;
+  border-radius: 50%;
+  animation: eyes 10s infinite linear;
+}
+
+.Monster__eye-left {
+  left: 0;
+}
+
+.Monster__eye-right {
+  right: 0;
+  transform: scale(1.4);
+}
+
+.Monster__mouth {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 60px;
+  background: radial-gradient(rgba(0, 0, 0, 0.6), black);
+  border-radius: 50%;
+  overflow: hidden;
+  animation: mouth 5s infinite;
+}
+
+.Monster__mouth::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 20px;
+  background: radial-gradient(orangered, crimson);
+  border-top-left-radius: 80%;
+}
+
+[class^="Mouth__fang-"] {
+  position: absolute;
+  top: 0;
+  border: 10px solid transparent;
+  border-top-color: azure;
+  border-top-width: 20px;
+}
+
+.Mouth__fang-left {
+  left: 10px;
+}
+
+.Mouth__fang-right {
+  right: 10px;
+}
+
+@keyframes monster {
+  0%,
+  55%,
+  71%,
+  73%,
+  75%,
+  100% {
+    filter: brightness(1.2) saturate(1);
+  }
+
+  60%,
+  70%,
+  72%,
+  74% {
+    filter: brightness(2) saturate(2);
+  }
+
+  0%,
+  100% {
+    transform: translate3d(0);
+  }
+
+  20% {
+    transform: translate3d(100px, -120px, 5rem);
+  }
+
+  50% {
+    transform: translate3d(50px, 120px, 5rem);
+  }
+
+  80% {
+    transform: translate3d(-100px, -120px, 5rem);
+  }
+}
+
+@keyframes cloud {
+  0% {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+  }
+}
+
+@keyframes square {
+  0% {
+    transform: rotate(0deg) translateX(160px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(160px) rotate(-720deg);
+  }
+}
+
+@keyframes stripes {
+  0% {
+    transform: rotate(0deg) translateX(40px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(720deg) translateX(40px) rotate(720deg);
+  }
+}
+
+@keyframes bars {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes eyes {
+  0%,
+  18%,
+  59%,
+  61%,
+  67%,
+  83%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+
+  20%,
+  33%,
+  55%,
+  57%,
+  63%,
+  65%,
+  85%,
+  98% {
+    transform: translateX(20px) translateY(-10px);
+  }
+
+  35%,
+  53% {
+    transform: translateX(30px) translateY(30px);
+  }
+}
+
+@keyframes mouth {
+  0%,
+  50%,
+  90%,
+  100% {
+    width: 70px;
+    transform: translateX(-50%) scale(1);
+  }
+
+  60%,
+  85% {
+    width: 100px;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
